@@ -10,6 +10,14 @@ function buildContext(t) {
     return e
 }
 
+function generateRandomDelay() {
+    const minDelay = 5 * 60 * 1000 // 5分钟的毫秒数
+    const maxDelay = 30 * 60 * 1000 // 30分钟的毫秒数
+
+    const delay = Math.random() * (maxDelay - minDelay) + minDelay
+    return Math.floor(delay)
+}
+
 function start() {
     const cardIdsRelease = ['864974377869770752', '864963040213073920', '864962686356410370']
     const customerId = ''
@@ -48,7 +56,8 @@ function start() {
         .then((response) => {
             console.log(response.data)
         })
+    const delay = generateRandomDelay()
+    setTimeout(start, delay)
 }
 
 start()
-// https://webapi.qmai.cn/web/seller/account/login-minp
